@@ -1,0 +1,57 @@
+
+    <form phx-submit="submit" id='myform' autocomplete="off">
+    <label><input name="input_value" id="search" type='text' placeholder="enter username..." required></label>
+    <input type="submit" id="btn" value="search"/>
+  </form>
+
+
+  <div class='profile-container'>
+
+<%= if @profile != none() do %>
+
+
+<%= @profile %>
+<% end %>
+
+
+    <div id='profile-card'>
+      <div>
+        <a href='' id='git-profile' target="_blank"><img src=""
+            alt='' id='user-image'></a>
+      </div>
+
+      <div>
+        <div class='profile-head'>
+          <div id='user-name'></div>
+          <a href='' id="git-link" target="_blank"></a>
+          <div id='bio'></div>
+        </div>
+
+        <div class='profile-body'>
+          <div>
+            <div class='cap'>repos</div>
+            <div id='repository'></div>
+          </div>
+          <div>
+            <div class='cap'>followers</div>
+            <div id='followers'></div>
+          </div>
+          <div>
+            <div class='cap'>following</div>
+            <div id='following'></div>
+          </div>
+        </div>
+
+        <div class='profile-footer'>
+          <div>
+            <div class="foot"><i class="fa-solid fa-location-dot"></i><span id='location'></span></div>
+            <a class='blog'><i class="fa-solid fa-paperclip"></i> <span id="blog"> blogs</span></a>
+          </div>
+          <div>
+            <div class="foot"><i class="fa-brands fa-twitter"></i><span id='twitter'></span></div>
+            <div><i class="fa-solid fa-building"></i><span id='company'></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
