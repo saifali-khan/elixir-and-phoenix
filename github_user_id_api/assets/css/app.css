@@ -66,12 +66,6 @@ img {
   font-size: 30px;
   margin-bottom: 10px;
 }
-#intro-container {
-  display: flex;
-  justify-content: center;
-  margin: 50px;
-  background-color: rgb(26, 26, 49);
-}
 #git-link {
   text-decoration: none;
   color: rgb(68, 68, 240);

@@ -1,5 +1,11 @@
 defmodule GithubUserIdApiWeb.PageLive do
   use GithubUserIdApiWeb, :live_view
+@impl true
+  def mount(_params, _session, socket) do
+{:ok, assign(socket, profile: nil)}
+  end
+
+  @impl true
 
   def handle_event("submit", %{"input_value" => username}, socket) do
     case HTTPoison.get("https://api.github.com/users/#{username}") do
