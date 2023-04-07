@@ -1,6 +1,6 @@
 <body>
     <form phx-submit="submit" id='myform' autocomplete="off">
-    <label><input name="input_value" id="search" type='text' placeholder="enter username..." required></label>
+    <label><input name="input_value" id="search" type='text' placeholder="enter username..." required autofocus></label>
     <input type="submit" id="btn" value="search"/>
   </form>
 <div class="container">
@@ -10,15 +10,15 @@
 
     <div id='profile-card'>
       <div>
-        <a href='' id='git-profile' target="_blank"><img src={@profile["avatar_url"]}
+        <a href={@profile["html_url"]} id='git-profile' target="_blank"><img src={@profile["avatar_url"]}
             alt='' id='user-image'></a>
       </div>
 
       <div>
         <div class='profile-head'>
           <div id='user-name'><%= @profile["name"]%></div>
-          <a href={@profile["html_href"]} id="git-link" target="_blank">@<%= @profile["login"]%></a>
-          <div id='bio'><%= @profile["bio"]%></div>
+          <a href={@profile["html_url"]} id="git-link" target="_blank">@<%= @profile["login"]%></a>
+          <div id='bio'><%= @profile["bio"] || "bio: not available" %></div>
         </div>
 
         <div class='profile-body'>
@@ -38,12 +38,12 @@
 
         <div class='profile-footer'>
           <div>
-            <div class="foot"><i class="fa-solid fa-location-dot"></i><span id='location'> <%= @profile["location"]%></span></div>
-            <a href="" class='blog'><i class="fa-solid fa-paperclip"></i> <span id="blog"> <%= @profile["blog"]%></span></a>
+            <div class="foot"><i class="fa-solid fa-location-dot"></i><span id='location'> <%= @profile["location"] || " not available" %></span></div>
+            <a href={@profile["blog"]} class='blog'><i class="fa-solid fa-paperclip" target="_blank" ></i> <span id="blog"> blog </span></a>
           </div>
           <div>
-            <div class="foot"><i class="fa-brands fa-twitter"></i><span id='twitter'><%= @profile["twitter_username"]%></span></div>
-            <div><i class="fa-solid fa-building"></i><span id='company'><%= @profile["company"]%></span></div>
+            <div class="foot"><i class="fa-brands fa-twitter"></i><span id='twitter'><%= @profile["twitter_username"] || " not available" %></span></div>
+            <div><i class="fa-solid fa-building"></i><span id='company'><%= @profile["company"] || " not available" %></span></div>
           </div>
         </div>
       </div>

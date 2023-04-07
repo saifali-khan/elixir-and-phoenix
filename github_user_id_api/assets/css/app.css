@@ -53,6 +53,7 @@ body {
   left: 590px;
 }
 #profile-card {
+  display: flex;
   padding: 40px;
   text-transform: capitalize;
 }

@@ -22,15 +22,15 @@ import "../css/app.css"
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
-import {Socket} from "phoenix"
-import {LiveSocket} from "phoenix_live_view"
+import { Socket } from "phoenix"
+import { LiveSocket } from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken } })
 
 // Show progress bar on live navigation and form submits
-topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
+topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" })
 window.addEventListener("phx:page-loading-start", info => topbar.show())
 window.addEventListener("phx:page-loading-stop", info => topbar.hide())
 
@@ -44,86 +44,25 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
 
-
-// javascript with similar functionalitys
-
-
-// let form = document.getElementById("myform");
-// form.addEventListener("submit", function (event) {
+let form = document.getElementById("myform");
+form.addEventListener("submit", function (event) {
 
 
-//   event.preventDefault()
-//   let search = document.getElementById("search")
-//   let url = "https://api.github.com/users/";
-//   let removeSpace = search.value.split(" ").join("")
+    event.preventDefault()
+    let search = document.getElementById("search")
+    let url = "https://api.github.com/users/";
+    let removeSpace = search.value.split(" ").join("")
 
 
-//   fetch(url + removeSpace)
-//     .then(response => response.json())
-//     .then(data => {
-//       if (data.message === "Not Found") {
-        
-//           document.getElementById("intro-container").style.display = "flex";
-//         alert("No Such User");
-//       } else {
+    fetch(url + removeSpace)
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === "Not Found") {
 
-//         document.getElementById("profile-card").style.display = "flex";
-//         document.getElementById("intro-container").style.display = "none";
-//         let name = document.getElementById("user-name");
-//         let gitProfile = document.getElementById("git-profile");
-//         let gitLink = document.getElementById("git-link");
-//         let bio = document.getElementById("bio");
-//         let repo = document.getElementById("repository");
-//         let followers = document.getElementById("followers");
-//         let following = document.getElementById("following");
-//         let location = document.getElementById("location");
-//         let twitter = document.getElementById("twitter");
-//         let blog = document.getElementById("blog");
-//         let company = document.getElementById("company");
 
-//         name.innerHTML = data.name || data.login;
+                alert("No Such User");
+                search.value = ""
+            }
 
-//         gitProfile.href = data.html_url;
-//         gitProfile.innerHTML = `<img src='${data.avatar_url}' alt='user image'>`
-
-//         gitLink.href = data.html_url;
-//         gitLink.innerHTML = "@" + data.login;
-
-//         bio.innerHTML = "bio: " + data.bio;
-//         if (data.bio === null) {
-//           bio.innerHTML = "bio: not available"
-//         }
-
-//         repo.innerHTML = data.public_repos;
-
-//         followers.innerHTML = data.followers;
-
-//         following.innerHTML = data.following;
-
-//         location.innerHTML = " " + data.location;
-//         if (data.location === null) {
-//           location.innerHTML = " not available"
-//         }
-
-//         twitter.innerHTML = ' ' + data.twitter_username;
-//         if (data.twitter_username === null) {
-//           twitter.innerHTML = " not avilable"
-//         }
-
-//         blog.href = data.blog;
-//         if (data.blog === "" || null) {
-//           blog.innerHTML = "not available";
-//         }
-
-//         company.innerHTML = ' ' + data.company;
-//         if (data.company === null) {
-//           company.innerHTML = " not available"
-//         }
-
-//       }
-
-//     })
-//     .catch(document.getElementById("profile-card").style.display = "none")
-//   search.value = "";
-// })
-
+        })
+})
